@@ -1,0 +1,9 @@
+.day{
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.day img{
+  margin: 5px 0;
+  object-fit: cover;
+}

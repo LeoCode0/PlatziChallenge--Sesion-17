@@ -1,0 +1,7 @@
+.hours{
+  overflow-x: scroll;
+}
+
+.hours li{
+  margin: 30px 0;
+}

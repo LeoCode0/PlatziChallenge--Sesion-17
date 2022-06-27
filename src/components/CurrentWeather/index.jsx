@@ -1,26 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import { ListDays } from '../ListDays'
+import React from 'react'
+import { useApi } from "../../context/ApiContext";
 import "./styles.css"
 
 export const CurrentWeather = () => {
-  const [weather, setWeather] = useState(null)
-  const [loading, setLoading] = useState(true)
-  useEffect(() => {
-    fetch(`${process.env.REACT_APP_API}onecall?lat=62.5073&lon=-41.1277&units=metric&appid=${process.env.REACT_APP_API_KEY}`)
-      .then(response => response.json())
-      .then(data => {
-        setWeather(data)
-        console.log(data)
-        setLoading(false)
-      })
-  }, [])
+  const weather = useApi()
 
-  if(loading){
+  if(!weather){
     return <p>Loading...</p>
   }
 
+  console.log(weather)
   return (
-    <section className="currentWeather" >
+    <section className="container" >
       <div className="currentWeather--details">
       <h1>{weather.timezone}</h1>
         <h2>Temp</h2>
@@ -40,9 +31,8 @@ export const CurrentWeather = () => {
         </div>
       </div>
       <div className="currentWeather--img">
-        <img src="" alt="Weather" />
+        <img src={`https://openweathermap.org/img/wn/${weather.current.weather[0].icon}@2x.png`} alt="Weather" />
       </div>
-      <ListDays days={weather.daily} />
     </section>
   )
 }

@@ -1,18 +1,17 @@
 import React from 'react'
-import { Day } from "../Day";
 import { useApi } from "../../context/ApiContext";
+import { Hour } from "../Hour";
 
-import "./styles.css"
-
-export const ListDays = () => {
+export const NextHours = () => {
   const weather = useApi()
   if(!weather){
     return <p>Loading...</p>
   }
-
+  weather.hourly.length = 6
+  console.log(weather)
   return (
     <ul className='container' >
-      {weather.daily.map((day, id) => <Day  {...day} dayNumber={id} />)}
+      {weather.hourly.map((hour, id) => <Hour {...hour} addHour={id} />)}
     </ul>
   )
 }

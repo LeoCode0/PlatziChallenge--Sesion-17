@@ -16,6 +16,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.6rem;
+  background: #0c1633;
+  color: white;
 }
 
 code {
@@ -25,4 +27,14 @@ code {
 
 ul, ol{
   list-style: none;
+}
+.container{
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 0px 0px 20px 0px #002855;
+  margin: 30px auto;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 1024px;
+  height: 200px;
 }
