@@ -4,7 +4,7 @@ const APIContext = createContext({});
 
 export const ApiContextProvider = ({ children }) => {
   const [data, setData] = useState(null);
-  const [coordinates, setCoordinates] = useState([47.44, 3.16]);
+  const [coordinates] = useState([47.44, 3.16]);
 
   useEffect(() => {
     fetch(
@@ -14,7 +14,7 @@ export const ApiContextProvider = ({ children }) => {
       .then((weather) => {
         setData(weather);
       });
-  }, []);
+  }, [coordinates]);
 
   return <APIContext.Provider value={data}>{children}</APIContext.Provider>;
 };
